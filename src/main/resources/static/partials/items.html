@@ -1,0 +1,55 @@
+<div>
+
+  <h3>Setup</h3>
+  <form class="form-horizontal" role="form">
+      <a class="question" target="_blank" title="Go here to generate a personal access token" href="https://github.com/settings/tokens">?</a><input class="inputField" type="text" id="token" ng-model="projectRequest.token" placeholder="GitHub Personal Access Token">
+      <input class="inputField" type="text" id="company" ng-model="projectRequest.company" placeholder="company">
+      <input class="inputField" type="text" id="excludes" ng-model="projectRequest.excludes" placeholder="project exclude list">
+      <input class="inputField" type="text" id="includes" ng-model="projectRequest.includes" placeholder="project include list">
+    <br>
+    <input type="submit" class="btn btn-primary" value="Inspect Project" ng-click="createProject()"/>
+  </form>
+
+  <div class="itemsList">
+    <div ng-repeat="item in items" class="project">
+      <h4>{{item.name}}</h4>
+      <div ng-click="debug(item.name, module)" class="item" style="background-color: {{module | errorColor}}" ng-repeat="module in item.modules">
+        <div class="itemContent">
+          <span class="{{module.type}} module-icon">{{module.type == 'maven' ? 'm' : 'js'}}</span>
+          {{item.name}}<br>
+          {{module.name}}<br>
+          {{module.libraries.length}} of which {{(module.libraries | filter: {inherited: true}).length}} inherited
+          {{module.error ? 'ERROR - click to view' : ''}}
+        </div>
+      </div>
+      <div class="item noModules" ng-show="item.modules.length == 0">
+        No modules found
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/ng-template" id="debug.html">
+  <div class="{{item.type}}"><a ng-href="https://github.com/{{companyName}}/{{projectName}}">{{projectName}}{{item.name}}</a></div>
+  <div ng-repeat="library in item.libraries | filter: {inherited: false}">
+
+    <div class="libraryName">{{library.dependency.groupId}} {{library.dependency.artifactId}} {{library.dependency.version}}</div>
+    <div class="newerVersions" ng-repeat="version in library.newerVersions">
+      <label for="a{{version}}{{library.dependency.artifactId}}"><input id="a{{version}}{{library.dependency.artifactId}}" type="checkbox" ng-model="library.selected" ng-change="library.selectedVersion=version">{{version}}</label>
+    </div>
+  </div>
+  <pre ng-if="item.error">{{item.error}}</pre>
+  <div ng-hide="(item.libraries | filter: {inherited: false}).length > 0 && item.libraries.length > 0">
+    All Libraries {{ item.libraries.length > 0 ? 'inherited' : 'OK'}}
+  </div>
+  <input ng-show="(item.libraries | filter: {inherited: false}).length > 0"
+         type="submit"
+         class="btn btn-primary"
+         value="Patch and PR" ng-click="createPullRequest(projectName, item)"/>
+  <a ng-href="{{url}}" ng-show="url">{{url}}</a>
+  <div ng-show="loading" class="loader">
+
+    <div class="{{loadingIndex%5 == 0 ? 'circles' : loadingIndex%5 == 1 ? 'dots' : loadingIndex%5 == 2 ? 'flower' : loadingIndex%5 == 3 ? 'inner-circles' : 'plus'}}-loader">
+      Loading…
+    </div>
+  </div>
+</script>
