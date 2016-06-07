@@ -23,7 +23,7 @@
     <!-- docker -->
     <groupbyinc.docker.base.version>1.8</groupbyinc.docker.base.version>
     <groupbyinc.docker.repo>docker.groupbyinc.com</groupbyinc.docker.repo>
-    <groupbyinc.docker.image.name>docker.groupbyinc.com/${project.artifactId}</groupbyinc.docker.image.name>
+    <groupbyinc.docker.image.name>hub.docker.com/groupbyinc/${project.artifactId}</groupbyinc.docker.image.name>
     <groupbyinc.docker.maintainer>"GroupBy Engineering" &lt;eng@groupbyinc.com&gt;</groupbyinc.docker.maintainer>
     <groupbyinc.docker.java.image>${groupbyinc.docker.repo}/java:${groupbyinc.docker.base.version}</groupbyinc.docker.java.image>
 
