@@ -50,5 +50,5 @@ The tool tries really hard to create the smallest amount of change to your sourc
 Chose your version changes and create a pull request
 ![PR2](/src/main/resources/static/images/dependency-checker3.png)
 
-Question marks represent an upgrade that couldn't be found in the source pom file.  This could be because a parent project not accessible to the tool contains the dependency and these are generally fixed by some other dependency upgrade.
+Question marks represent an upgrade that couldn't be found in the source pom file.  This could be because a parent project not accessible to the tool contains the dependency and these are generally fixed by some other dependency upgrade.  In the case above, jackson-databind was not found, but was actually patched when jackson-core was fixed.
 
