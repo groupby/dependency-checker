@@ -45,4 +45,10 @@ We ran the tool on the splunk public repositories.
 Pull requests can be created to create patched versions of your files. 
 The tool tries really hard to create the smallest amount of change to your source files.  
 
-![PR](/src/main/resources/static/images/dependency-checker2.png)
+![PR1](/src/main/resources/static/images/dependency-checker2.png)
+
+Chose your version changes.
+![PR2](/src/main/resources/static/images/dependency-checker3.png)
+
+Create a pull request
+![PR3](/src/main/resources/static/images/dependency-checker4.png)
