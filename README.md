@@ -47,8 +47,6 @@ The tool tries really hard to create the smallest amount of change to your sourc
 
 ![PR1](/src/main/resources/static/images/dependency-checker2.png)
 
-Chose your version changes.
+Chose your version changes and create a pull request
 ![PR2](/src/main/resources/static/images/dependency-checker3.png)
 
-Create a pull request
-![PR3](/src/main/resources/static/images/dependency-checker4.png)
