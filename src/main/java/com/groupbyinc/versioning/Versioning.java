@@ -177,7 +177,7 @@ public class Versioning {
       if (findMavenDependencies(project2, subPath, pomFile)) return;
     }
     if (packageFile.exists()) {
-      if (findNpmDependencies(project2, subPath, projectFolder, FileUtils.readFileToString(packageFile))) return;
+      if (findNpmDependencies(project2, subPath, projectFolder, FileUtils.readFileToString(packageFile, "UTF-8"))) return;
     }
     File[] folders = projectFolder.listFiles(File::isDirectory);
     for (File folder : folders) {
