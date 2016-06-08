@@ -58,7 +58,6 @@ public class ProjectManager {
     PomManipulator pomManipulator = new PomManipulator();
     PackageManipulator packageManipulator = new PackageManipulator();
     File rootProjectFolder = new File(github.getRootFolder() + company + "/" + projectName);
-    System.out.println(rootProjectFolder.getCanonicalPath());
     File[] dirs = rootProjectFolder.listFiles(File::isDirectory);
     File fileToChange = new File(dirs[0].getPath() + "/" + moduleName + ("maven".equals(moduleType) ? "/pom.xml" : "/package.json"));
     Set<File> changed = new HashSet<>();

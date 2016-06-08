@@ -32,7 +32,7 @@ public class PomManipulatorTest {
         "        <!-- Your own application should inherit from spring-boot-starter-parent -->\n" +
         "        <groupId>org.springframework.boot</groupId>\n" +
         "        <artifactId>spring-boot-starter-parent</artifactId>\n" +
-        "        <version>1.3.3.RELEASE</version>\n" +
+        "        <version>1.3.3.RELEASE ✓</version>\n" +
         "    </parent>\n" +
         "    <properties>\n" +
         "        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n" +
@@ -77,7 +77,7 @@ public class PomManipulatorTest {
         "        <!-- Your own application should inherit from spring-boot-starter-parent -->\n" +
         "        <groupId>org.springframework.boot</groupId>\n" +
         "        <artifactId>spring-boot-starter-parent</artifactId>\n" +
-        "        <version>1.3.3.RELEASE</version>\n" +
+        "        <version>1.3.3.RELEASE ✓</version>\n" +
         "    </parent>\n" +
         "    <properties>\n" +
         "        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n" +
@@ -100,7 +100,7 @@ public class PomManipulatorTest {
         "            <artifactId>spring-boot-starter-web</artifactId>\n" +
         "        </dependency>\n" +
         "    </dependencies>\n" +
-        "</project>", FileUtils.readFileToString(changedFiles.get(0)));
+        "</project>", FileUtils.readFileToString(changedFiles.get(0), "UTF-8"));
   }
 
   @Test
@@ -181,7 +181,7 @@ public class PomManipulatorTest {
         "            <artifactId>spring-boot-starter-web</artifactId>\n" +
         "        </dependency>\n" +
         "    </dependencies>\n" +
-        "</project>", FileUtils.readFileToString(changedFiles.get(0)));
+        "</project>", FileUtils.readFileToString(changedFiles.get(0), "UTF-8"));
   }
 
   @Test
@@ -232,7 +232,7 @@ public class PomManipulatorTest {
         "      <artifactId>junit</artifactId>\n" +
         "      <version>4.1.13</version>\n" +
         "      <scope>test</scope>\n" +
-        "    </dependency></dependencies></project>", FileUtils.readFileToString(pomFile));
+        "    </dependency></dependencies></project>", FileUtils.readFileToString(pomFile, "UTF-8"));
   }
 
   @Test
@@ -284,7 +284,7 @@ public class PomManipulatorTest {
         "      <scope>test</scope>\n" +
         "    </dependency>" +
         "</dependencies>" +
-        "</project>", FileUtils.readFileToString(pomFile));
+        "</project>", FileUtils.readFileToString(pomFile, "UTF-8"));
   }
 
   @Test
@@ -336,7 +336,7 @@ public class PomManipulatorTest {
         "      <scope>test</scope>\n" +
         "    </dependency>" +
         "</dependencies>" +
-        "</project>", FileUtils.readFileToString(pomFile));
+        "</project>", FileUtils.readFileToString(pomFile, "UTF-8"));
   }
 
   @Test
@@ -388,7 +388,7 @@ public class PomManipulatorTest {
         "      <scope>test</scope>\n" +
         "    </dependency>" +
         "</dependencies>" +
-        "</project>", FileUtils.readFileToString(pomFile));
+        "</project>", FileUtils.readFileToString(pomFile, "UTF-8"));
   }
 
   @Test
@@ -446,17 +446,13 @@ public class PomManipulatorTest {
         "      <scope>test</scope>\n" +
         "    </dependency>" +
         "</dependencies>" +
-        "</project>", FileUtils.readFileToString(pomFile));
+        "</project>", FileUtils.readFileToString(pomFile, "UTF-8"));
 
     assertEquals("<project>" +
         "<properties><junit.version>4.1.13</junit.version></properties>" +
-        "</project>", FileUtils.readFileToString(parentPomFile));
+        "</project>", FileUtils.readFileToString(parentPomFile, "UTF-8"));
   }
 
-  @Test
-  public void nonModified(){
-    fail("ni");
-  }
 
 
 

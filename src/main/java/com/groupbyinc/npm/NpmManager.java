@@ -15,24 +15,15 @@ import static java.util.Arrays.asList;
 @Component
 public class NpmManager {
 
-  private String nodeBinDir;
-
   private String npmCheckUpdatesBinary;
 
   @Autowired
-  public NpmManager(@Value("${node.bin.dir}") String nodeBinDir,
-                    @Value("${npm.check.updates.binary}") String npmCheckUpdatesBinary) {
-    this.nodeBinDir = nodeBinDir;
+  public NpmManager(@Value("${npm.check.updates.binary}") String npmCheckUpdatesBinary) {
     this.npmCheckUpdatesBinary = npmCheckUpdatesBinary;
   }
 
   public String getDependencyJson(File dir, String rawJson) throws Exception {
-    return runCommand("/bin/bash -c /usr/bin/npm-check-updates | grep -v INFO | grep →", dir, rawJson);
-  }
-
-  private String runCommand(String pCommand, File dir, String rawJson) throws Exception {
-    String[] cmd = new String[]{"/bin/bash", "-c", "export PATH=$PATH:" + nodeBinDir +
-        " && " + npmCheckUpdatesBinary + " --packageFile package.json | grep →"};
+    String[] cmd = new String[]{ "/bin/bash", "-c", "export PATH=$PATH:/usr/bin && " + npmCheckUpdatesBinary + " --packageFile package.json | grep →"};
     ProcessBuilder builder = new ProcessBuilder();
     builder.directory(dir);
     builder.command(cmd);
@@ -47,7 +38,6 @@ public class NpmManager {
       StringBuilder output = new StringBuilder();
       o.write(rawJson.getBytes());
       while ((line = r.readLine()) != null && p.isAlive()) {
-        System.out.println(line);
         output.append(line)
             .append("\n");
       }
