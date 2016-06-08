@@ -32,5 +32,10 @@ mvn spring-boot:run
 What it looks like
 ----
 
+### Dashboard 
+
 ![dashboard](/src/main/resources/static/images/dependency-checker1.png)
 
+### Creating a pull request
+
+![PR](/src/main/resources/static/images/dependency-checker2.png)
