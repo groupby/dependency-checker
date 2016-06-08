@@ -7,6 +7,8 @@ For a list of projects on github:
 3. Inspects the files for stale versions and creates a dashboard showing how out of date your projects are.
 4. Clicking on a project allows you to select the versions you wish to update and creates a pull request in that repository.
 
+Currently supports Maven projects that use a pom.xml and JavaScript projects that use a package.json. 
+
 Getting Started (Docker)
 ----
 
@@ -34,8 +36,13 @@ What it looks like
 
 ### Dashboard 
 
+We ran the tool on the splunk public repositories.
+
 ![dashboard](/src/main/resources/static/images/dependency-checker1.png)
 
 ### Creating a pull request
+
+Pull requests can be created to create patched versions of your files. 
+The tool tries really hard to create the smallest amount of change to your source files.  
 
 ![PR](/src/main/resources/static/images/dependency-checker2.png)
