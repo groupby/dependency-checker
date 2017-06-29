@@ -23,6 +23,12 @@ Open a browser: <a href="http://localhost:8080/" target="_blank">localhost:8080<
 Getting Started (Maven)
 ---
 
+Install NPM checker globally.
+
+```bash
+sudo npm install -g npm-check-updates
+```
+
 Clone the project and run.
 
 ```bash
